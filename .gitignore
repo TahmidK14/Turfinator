@@ -1,0 +1,23 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Configuration files with sensitive data
+config/database.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
