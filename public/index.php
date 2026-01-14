@@ -39,13 +39,30 @@ switch ($page)
         require_once __DIR__ . '/../controllers/AuthController.php';
         (new AuthController())->logout();
         break;
-    
+
+        case 'manager-create':
+            require_once __DIR__ . '/../controllers/AdminController.php';
+            (new AdminController())->showCreateManager();
+            break;
+        
+        case 'manager-store':
+            require_once __DIR__ . '/../controllers/AdminController.php';
+            (new AdminController())->storeManager();
+            break;
+        
+        case 'manager-list':
+            require_once __DIR__ . '/../controllers/AdminController.php';
+            (new AdminController())->listManagers();
+            break;   
+             
     case 'dashboard':
         require_once __DIR__ . '/../controllers/DashboardController.php';
         (new DashboardController())->index();
         break;
         default:
         echo "404 - Page not found";
-        
+
+
+
     
 }

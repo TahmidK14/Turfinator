@@ -19,15 +19,13 @@ class AuthController
         $name  = trim($_POST['name'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $phone = trim($_POST['phone'] ?? '');
-        $role  = trim($_POST['role'] ?? 'customer');
         $pass  = $_POST['password'] ?? '';
         $cpass = $_POST['confirm_password'] ?? '';
-
+        $role = 'customer'; // forced by system
         $errors = [];
 
         if ($name === '') $errors[] = "Name is required";
         if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required";
-        if (!in_array($role, ['manager','customer'])) $errors[] = "Invalid role";
         if (strlen($pass) < 6) $errors[] = "Password must be at least 6 characters";
         if ($pass !== $cpass) $errors[] = "Passwords do not match";
 

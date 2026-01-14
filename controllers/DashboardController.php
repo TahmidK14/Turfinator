@@ -11,10 +11,13 @@ class DashboardController
 
         $role = $_SESSION['role'] ?? 'customer';
 
-        if ($role === 'manager') {
+        if ($role === 'admin') {
+            require_once __DIR__ . '/../views/dashboard/admin.php';
+        } elseif ($role === 'manager') {
             require_once __DIR__ . '/../views/dashboard/manager.php';
         } else {
             require_once __DIR__ . '/../views/dashboard/customer.php';
         }
+        
     }
 }

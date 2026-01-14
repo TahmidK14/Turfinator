@@ -37,4 +37,12 @@ class User
         $user = $res->fetch_assoc();
         return $user ?: null;
     }
+    public function getManagers(): array
+    {
+        $stmt = $this->db->prepare("SELECT id, name, email, phone, created_at FROM users WHERE role='manager' ORDER BY id DESC");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->fetch_all(MYSQLI_ASSOC);
+    }
+    
 }

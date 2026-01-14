@@ -16,10 +16,6 @@ if (!empty($_SESSION['errors'])) {
     <input type="email" name="email" placeholder="Email" required><br><br>
     <input type="text" name="phone" placeholder="Phone"><br><br>
 
-    <select name="role" required>
-        <option value="customer">Customer</option>
-        <option value="manager">Manager</option>
-    </select><br><br>
 
     <input type="password" name="password" placeholder="Password" required><br><br>
     <input type="password" name="confirm_password" placeholder="Confirm Password" required><br><br>
