@@ -1,5 +1,16 @@
 // Basic JS Validation (Frontend)
 document.addEventListener("DOMContentLoaded", () => {
+    const turfForm = document.getElementById("turfForm");
+if (turfForm) {
+  turfForm.addEventListener("submit", (e) => {
+    const price = turfForm.querySelector('input[name="price_per_hour"]').value.trim();
+    if (price === "" || isNaN(price) || Number(price) <= 0) {
+      alert("Price must be a positive number");
+      e.preventDefault();
+    }
+  });
+}
+
     const reg = document.getElementById("registerForm");
     if (reg) {
       reg.addEventListener("submit", (e) => {

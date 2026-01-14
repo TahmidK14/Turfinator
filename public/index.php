@@ -54,7 +54,35 @@ switch ($page)
             require_once __DIR__ . '/../controllers/AdminController.php';
             (new AdminController())->listManagers();
             break;   
-             
+            case 'manager-turfs':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->index();
+                break;
+            
+            case 'turf-create':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->create();
+                break;
+            
+            case 'turf-store':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->store();
+                break;
+            
+            case 'turf-edit':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->edit();
+                break;
+            
+            case 'turf-update':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->update();
+                break;
+            
+            case 'turf-delete':
+                require_once __DIR__ . '/../controllers/TurfController.php';
+                (new TurfController())->delete();
+                break;            
     case 'dashboard':
         require_once __DIR__ . '/../controllers/DashboardController.php';
         (new DashboardController())->index();

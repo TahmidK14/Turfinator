@@ -4,8 +4,8 @@
 <p>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>!</p>
 
 <ul>
-  <li><a href="#">Add Turf</a></li>
-  <li><a href="#">Manage Turfs</a></li>
+  <li><a href="index.php?page=manager-turfs">Manage Turfs</a></li>
+  <li><a href="index.php?page=turf-create">Add Turf</a></li>
   <li><a href="#">Manage Bookings</a></li>
   <li><a href="#">Customer List</a></li>
   <li><a href="index.php?page=logout">Logout</a></li>
