@@ -9,27 +9,43 @@ session_start();
 // Simple page routing using query string
 $page = $_GET['page'] ?? 'home';
 
-switch ($page) {
+switch ($page) 
+{
     case 'home':
         require_once '../views/home.php';
         break;
 
-    case 'login':
-        require_once '../views/auth/login.php';
-        break;
-        
     case 'register':
-        require_once '../views/auth/register.php';
+        require_once __DIR__ . '/../controllers/AuthController.php';
+        (new AuthController())->showRegister();
         break;
-    case 'db-test':
-        require_once '../models/Database.php';
-        $conn = Database::conn();
-        echo "DB Connected  (Server: " . $conn->host_info . ")";
+    
+    case 'register-submit':
+        require_once __DIR__ . '/../controllers/AuthController.php';
+        (new AuthController())->register();
         break;
-        
+    
+    case 'login':
+        require_once __DIR__ . '/../controllers/AuthController.php';
+        (new AuthController())->showLogin();
+        break;
+    
+    case 'login-submit':
+        require_once __DIR__ . '/../controllers/AuthController.php';
+        (new AuthController())->login();
+        break;
+    
     case 'logout':
-        require_once '../views/auth/logout.php';
+        require_once __DIR__ . '/../controllers/AuthController.php';
+        (new AuthController())->logout();
         break;
-    default:
+    
+    case 'dashboard':
+        require_once __DIR__ . '/../controllers/DashboardController.php';
+        (new DashboardController())->index();
+        break;
+        default:
         echo "404 - Page not found";
+        
+    
 }
