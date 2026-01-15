@@ -56,4 +56,37 @@ class Turf
         $stmt->bind_param("ii", $turfId, $managerId);
         return $stmt->execute();
     }
+    public function getActiveTurfs(string $q = ''): array
+    {
+        $q = trim($q);
+    
+        if ($q === '') {
+            $stmt = $this->db->prepare("SELECT * FROM turfs WHERE status='active' ORDER BY id DESC");
+            $stmt->execute();
+            $res = $stmt->get_result();
+            return $res->fetch_all(MYSQLI_ASSOC);
+        }
+    
+        $like = "%" . $q . "%";
+        $stmt = $this->db->prepare(
+            "SELECT * FROM turfs
+             WHERE status='active' AND (name LIKE ? OR location LIKE ?)
+             ORDER BY id DESC"
+        );
+        $stmt->bind_param("ss", $like, $like);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function getActiveTurfById(int $id): ?array
+    {
+        $stmt = $this->db->prepare("SELECT * FROM turfs WHERE id=? AND status='active' LIMIT 1");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $row = $res->fetch_assoc();
+        return $row ?: null;
+    }
+    
 }

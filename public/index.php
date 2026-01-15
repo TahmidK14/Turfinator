@@ -82,7 +82,16 @@ switch ($page)
             case 'turf-delete':
                 require_once __DIR__ . '/../controllers/TurfController.php';
                 (new TurfController())->delete();
-                break;            
+                break;
+                case 'turfs':
+                    require_once __DIR__ . '/../controllers/CustomerTurfController.php';
+                    (new CustomerTurfController())->index();
+                    break;
+                
+                case 'turf-details':
+                    require_once __DIR__ . '/../controllers/CustomerTurfController.php';
+                    (new CustomerTurfController())->show();
+                    break;            
     case 'dashboard':
         require_once __DIR__ . '/../controllers/DashboardController.php';
         (new DashboardController())->index();
