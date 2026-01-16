@@ -27,4 +27,15 @@ if (turfForm) {
       });
     }
   });
-  
+  const bookingForm = document.getElementById("bookingForm");
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", (e) => {
+      const s = bookingForm.querySelector('input[name="start_time"]').value;
+      const en = bookingForm.querySelector('input[name="end_time"]').value;
+      if (s && en && en <= s) {
+        alert("End time must be after start time");
+        e.preventDefault();
+      }
+    });
+  }
+    

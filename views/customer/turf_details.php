@@ -13,8 +13,34 @@
 
 <hr>
 
-<h3>Booking (Next Step)</h3>
-<p>We will add the booking form here next.</p>
+<hr>
+<h3>Book This Turf</h3>
+
+<?php
+if (!empty($_SESSION['success'])) { echo "<p>".$_SESSION['success']."</p>"; unset($_SESSION['success']); }
+if (!empty($_SESSION['errors'])) {
+  echo "<ul>";
+  foreach ($_SESSION['errors'] as $e) echo "<li>$e</li>";
+  echo "</ul>";
+  unset($_SESSION['errors']);
+}
+?>
+
+<form method="POST" action="index.php?page=booking-create" id="bookingForm">
+  <input type="hidden" name="turf_id" value="<?php echo $turf['id']; ?>">
+
+  <label>Date:</label><br>
+  <input type="date" name="booking_date" required><br><br>
+
+  <label>Start Time:</label><br>
+  <input type="time" name="start_time" required><br><br>
+
+  <label>End Time:</label><br>
+  <input type="time" name="end_time" required><br><br>
+
+  <button type="submit">Place Booking</button>
+</form>
+
 
 <p>
   <a href="index.php?page=turfs">← Back to Turfs</a>
