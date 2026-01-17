@@ -132,7 +132,31 @@ switch ($page) {
             require_once __DIR__ . '/../controllers/ApiController.php';
             (new ApiController())->turfs();
             break;
-        
+            case 'profile':
+                require_once __DIR__ . '/../controllers/ProfileController.php';
+                (new ProfileController())->show();
+                break;
+            
+            case 'profile-update':
+                require_once __DIR__ . '/../controllers/ProfileController.php';
+                (new ProfileController())->update();
+                break;
+            
+            case 'password':
+                require_once __DIR__ . '/../controllers/ProfileController.php';
+                (new ProfileController())->showPassword();
+                break;
+            
+            case 'password-update':
+                require_once __DIR__ . '/../controllers/ProfileController.php';
+                (new ProfileController())->updatePassword();
+                break;
+            
+            case 'account-delete':
+                require_once __DIR__ . '/../controllers/ProfileController.php';
+                (new ProfileController())->delete();
+                break;
+                
     
     default:
         echo "404 - Page not found";

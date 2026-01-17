@@ -7,6 +7,7 @@
   <li><a href="index.php?page=manager-turfs">Manage Turfs</a></li>
   <li><a href="index.php?page=turf-create">Add Turf</a></li>
   <li><a href="index.php?page=manage-bookings">Manage Bookings</a></li>
+  <li><a href="index.php?page=profile">My Profile</a></li>
   <li><a href="#">Customer List</a></li>
   <li><a href="index.php?page=logout">Logout</a></li>
 </ul>

@@ -86,3 +86,21 @@ if (turfForm) {
   
   });
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const passwordForm = document.getElementById("passwordForm");
+    if (passwordForm) {
+      passwordForm.addEventListener("submit", (e) => {
+        const newPass = passwordForm.querySelector('input[name="new_password"]').value;
+        const confirm = passwordForm.querySelector('input[name="confirm_password"]').value;
+  
+        if (newPass.length < 6) {
+          alert("New password must be at least 6 characters");
+          e.preventDefault();
+        } else if (newPass !== confirm) {
+          alert("New passwords do not match");
+          e.preventDefault();
+        }
+      });
+    }
+  });
+    
