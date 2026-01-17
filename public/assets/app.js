@@ -1,3 +1,5 @@
+console.log("app.js loaded ✅");
+
 // Basic JS Validation (Frontend)
 document.addEventListener("DOMContentLoaded", () => {
     const turfForm = document.getElementById("turfForm");
@@ -38,4 +40,49 @@ if (turfForm) {
       }
     });
   }
-    
+  console.log("app.js loaded ✅");
+
+  document.addEventListener("DOMContentLoaded", () => {
+  
+    const searchBox = document.getElementById("searchBox");
+    const turfBody = document.getElementById("turfBody");
+  
+    if (!searchBox || !turfBody) {
+      console.warn("Search elements not found");
+      return;
+    }
+  
+    console.log("Search box found ✅");
+  
+    searchBox.addEventListener("keyup", () => {
+      const q = searchBox.value;
+      console.log("Typing:", q);
+  
+      fetch(`./index.php?page=api-turfs&q=${encodeURIComponent(q)}`)
+        .then(res => res.json())
+        .then(data => {
+          turfBody.innerHTML = "";
+  
+          if (data.length === 0) {
+            turfBody.innerHTML = "<tr><td colspan='4'>No turfs found</td></tr>";
+            return;
+          }
+  
+          data.forEach(t => {
+            turfBody.innerHTML += `
+              <tr>
+                <td>${t.name}</td>
+                <td>${t.location}</td>
+                <td>${parseFloat(t.price_per_hour).toFixed(2)}</td>
+                <td>
+                  <a href="index.php?page=turf-details&id=${t.id}">View</a>
+                </td>
+              </tr>
+            `;
+          });
+        })
+        .catch(err => console.error("Fetch error:", err));
+    });
+  
+  });
+  

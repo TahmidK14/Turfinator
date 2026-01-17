@@ -128,7 +128,12 @@ switch ($page) {
         require_once __DIR__ . '/../controllers/DashboardController.php';
         (new DashboardController())->index();
         break;
-
+        case 'api-turfs':
+            require_once __DIR__ . '/../controllers/ApiController.php';
+            (new ApiController())->turfs();
+            break;
+        
+    
     default:
         echo "404 - Page not found";
 }

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Turf Booking System</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+
+    <!-- ✅ Correct relative paths -->
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/app.js" defer></script>
 </head>
 <body>
 
