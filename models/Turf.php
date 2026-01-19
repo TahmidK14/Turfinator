@@ -88,5 +88,15 @@ class Turf
         $row = $res->fetch_assoc();
         return $row ?: null;
     }
-    
+    public function getFeaturedActiveTurfs(int $limit = 6): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM turfs WHERE status='active' AND featured=1 ORDER BY id DESC LIMIT ?"
+        );
+        $stmt->bind_param("i", $limit);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->fetch_all(MYSQLI_ASSOC);
+    }
+        
 }
