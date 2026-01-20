@@ -6,7 +6,10 @@ class HomeController
     public function index(): void
     {
         $turfModel = new Turf();
-        $turfs = $turfModel->getActiveTurfs(); // reuse existing method
+
+        // ✅ use the methods that exist in Turf.php
+        $featured = $turfModel->getFeaturedActiveTurfs(6);
+        $turfs    = $turfModel->getActiveTurfs();
 
         require_once __DIR__ . '/../views/home.php';
     }

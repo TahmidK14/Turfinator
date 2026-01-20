@@ -11,8 +11,10 @@ $page = $_GET['page'] ?? 'home';
 switch ($page) {
 
     case 'home':
-        require_once '../views/home.php';
+        require_once __DIR__ . '/../controllers/HomeController.php';
+        (new HomeController())->index();
         break;
+    
 
     case 'register':
         require_once __DIR__ . '/../controllers/AuthController.php';

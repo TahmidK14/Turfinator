@@ -1,6 +1,6 @@
 <hr>
 <footer>
-    <p>&copy; <?php echo date("Y"); ?> Turf Booking System</p>
+    <p>&copy; <?php echo date("Y"); ?> Turfinator</p>
 </footer>
 
 </body>

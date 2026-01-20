@@ -19,16 +19,16 @@ class Turf
         return $res->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create(int $managerId, string $name, string $location, float $price, string $description, string $status): bool
+    public function create(int $managerId, string $name, string $location, float $price, string $description, string $status, string $image): bool
     {
         $stmt = $this->db->prepare(
-            "INSERT INTO turfs (manager_id, name, location, price_per_hour, description, status)
-             VALUES (?, ?, ?, ?, ?, ?)"
+            "INSERT INTO turfs (manager_id, name, location, price_per_hour, description, status, image)
+             VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
-        $stmt->bind_param("issdss", $managerId, $name, $location, $price, $description, $status);
+        $stmt->bind_param("issdsss", $managerId, $name, $location, $price, $description, $status, $image);
         return $stmt->execute();
     }
-
+    
     public function getOwnedById(int $turfId, int $managerId): ?array
     {
         $stmt = $this->db->prepare("SELECT * FROM turfs WHERE id = ? AND manager_id = ? LIMIT 1");
@@ -58,26 +58,27 @@ class Turf
     }
     public function getActiveTurfs(string $q = ''): array
     {
-        $q = trim($q);
-    
-        if ($q === '') {
-            $stmt = $this->db->prepare("SELECT * FROM turfs WHERE status='active' ORDER BY id DESC");
-            $stmt->execute();
-            $res = $stmt->get_result();
-            return $res->fetch_all(MYSQLI_ASSOC);
+        if ($q !== '') {
+            $like = "%" . $q . "%";
+            $stmt = $this->db->prepare(
+                "SELECT * FROM turfs
+                 WHERE status='active' AND (name LIKE ? OR location LIKE ?)
+                 ORDER BY id DESC"
+            );
+            $stmt->bind_param("ss", $like, $like);
+        } else {
+            $stmt = $this->db->prepare(
+                "SELECT * FROM turfs
+                 WHERE status='active'
+                 ORDER BY id DESC"
+            );
         }
     
-        $like = "%" . $q . "%";
-        $stmt = $this->db->prepare(
-            "SELECT * FROM turfs
-             WHERE status='active' AND (name LIKE ? OR location LIKE ?)
-             ORDER BY id DESC"
-        );
-        $stmt->bind_param("ss", $like, $like);
         $stmt->execute();
         $res = $stmt->get_result();
         return $res->fetch_all(MYSQLI_ASSOC);
     }
+    
     
     public function getActiveTurfById(int $id): ?array
     {
@@ -98,5 +99,7 @@ class Turf
         $res = $stmt->get_result();
         return $res->fetch_all(MYSQLI_ASSOC);
     }
-        
+
+    
+            
 }

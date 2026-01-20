@@ -25,7 +25,7 @@ if (!empty($_SESSION['errors'])) {
   unset($_SESSION['errors']);
 }
 ?>
-
+<?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer'): ?>
 <form method="POST" action="index.php?page=booking-create" id="bookingForm">
   <input type="hidden" name="turf_id" value="<?php echo $turf['id']; ?>">
 
@@ -40,7 +40,11 @@ if (!empty($_SESSION['errors'])) {
 
   <button type="submit">Place Booking</button>
 </form>
-
+<?php else: ?>
+  <div class="card" style="margin-top:12px;">
+    Booking is available for customers only.
+  </div>
+<?php endif; ?>
 
 <p>
   <a href="index.php?page=turfs">← Back to Turfs</a>
