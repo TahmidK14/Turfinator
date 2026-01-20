@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Turfinator</title>
   <link rel="stylesheet" href="assets/styles.css">
-  <script src="assets/app.js" defer></script>
+  <script src="./assets/app.js" defer></script>
 </head>
 <body>
 
@@ -25,6 +25,9 @@
       <?php endif; ?>
 
       <button type="button" id="themeToggle" class="btn btn-sm">Theme</button>
+
+
+
     </nav>
   </div>
 </header>
