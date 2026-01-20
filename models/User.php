@@ -77,6 +77,28 @@ class User
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
+    public function getCustomersByManager(int $managerId): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT 
+                u.id,
+                u.name,
+                u.email,
+                u.phone,
+                COUNT(b.id) AS bookings_count
+             FROM users u
+             INNER JOIN bookings b ON b.customer_id = u.id
+             INNER JOIN turfs t ON t.id = b.turf_id
+             WHERE t.manager_id = ?
+             GROUP BY u.id, u.name, u.email, u.phone
+             ORDER BY bookings_count DESC, u.name ASC"
+        );
     
+        $stmt->bind_param("i", $managerId);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->fetch_all(MYSQLI_ASSOC);
+    }
+        
         
 }

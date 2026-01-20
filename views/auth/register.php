@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Register</h2>
 
@@ -26,5 +27,5 @@ if (!empty($_SESSION['errors'])) {
 <p><a href="index.php?page=login">Already have an account? Login</a></p>
 
 <script src="/assets/app.js"></script>
-
+</div>
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Change Password</h2>
 
@@ -31,5 +32,6 @@ if (!empty($_SESSION['errors'])) {
 </p>
 
 <script src="assets/app.js" defer></script>
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

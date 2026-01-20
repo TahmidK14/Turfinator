@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Add New Turf</h2>
 
@@ -33,5 +34,6 @@ if (!empty($_SESSION['errors'])) {
 
 <script src="assets/app.js" defer></script>
 
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Managers</h2>
 
@@ -23,5 +24,6 @@ if (!empty($_SESSION['success'])) { echo "<p>".$_SESSION['success']."</p>"; unse
 
 <p><a href="index.php?page=manager-create">Add another manager</a></p>
 <p><a href="index.php?page=dashboard">Back to Dashboard</a></p>
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

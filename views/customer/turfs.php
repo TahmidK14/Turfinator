@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Browse Turfs</h2>
 
@@ -40,5 +41,6 @@ if (!empty($_SESSION['errors'])) {
   </tbody>
 </table>
 
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

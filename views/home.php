@@ -1,4 +1,6 @@
 <?php require_once __DIR__ . '/layouts/header.php'; ?>
+<div class="page stack">
+
 <?php
 $featured = $featured ?? [];
 $turfs = $turfs ?? [];
@@ -83,6 +85,7 @@ $turfs = $turfs ?? [];
       </div>
     </div>
   <?php endforeach; ?>
+</div>
 </div>
 
 <?php require_once __DIR__ . '/layouts/footer.php'; ?>

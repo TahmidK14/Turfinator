@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>My Profile</h2>
 
@@ -36,5 +37,6 @@ if (!empty($_SESSION['errors'])) {
 <form method="POST" action="index.php?page=account-delete" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
   <button type="submit">Delete Account</button>
 </form>
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -158,7 +158,12 @@ switch ($page) {
                 require_once __DIR__ . '/../controllers/ProfileController.php';
                 (new ProfileController())->delete();
                 break;
-                
+
+                case 'manager-customers':
+                    require_once __DIR__ . '/../controllers/CustomerListController.php';
+                    (new CustomerListController())->index();
+                    break;
+                                
     
     default:
         echo "404 - Page not found";

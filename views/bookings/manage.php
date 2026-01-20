@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<div class="page stack">
 
 <h2>Manage Bookings</h2>
 
@@ -56,5 +57,6 @@ if (!empty($_SESSION['errors'])) {
     </tr>
   <?php endforeach; ?>
 </table>
+</div>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>
